@@ -1,5 +1,8 @@
 import PageHeader from '@/components/PageHeader'
 import AboutItem from '@/components/AboutItem'
+import { useDispatch } from 'react-redux'
+import { setIsLoading } from '@/redux/commonSlice'
+import { useEffect } from 'react'
 const aboutData = [
   {
     title: '多元空間選擇',
@@ -29,6 +32,13 @@ const aboutData = [
   }
 ]
 export default function About() {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(setIsLoading(true))
+    setTimeout(() => {
+      dispatch(setIsLoading(false))
+    }, 500)
+  }, [dispatch])
   return (
     <>
       <PageHeader
