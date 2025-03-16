@@ -1,0 +1,23 @@
+@tailwind base;
+@layer base {
+  body {
+    font-family:
+      Inter,
+      -apple-system,
+      BlinkMacSystemFont,
+      'Segoe UI',
+      Roboto,
+      Oxygen,
+      Ubuntu,
+      Cantarell,
+      'Fira Sans',
+      'Droid Sans',
+      'Helvetica Neue',
+      sans-serif,
+      'Noto Sans TC';
+  }
+  input,
+  select {
+    @apply w-full border-0 bg-none focus:border-0 focus:outline-0;
+  }
+}
