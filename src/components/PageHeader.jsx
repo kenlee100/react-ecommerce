@@ -1,3 +1,8 @@
+import PropTypes from 'prop-types'
+PageHeader.propTypes = {
+  pageTitle: PropTypes.string,
+  imageUrl: PropTypes.string
+}
 export default function PageHeader({
   pageTitle,
   imageUrl = 'https://placehold.co/1024x768?text=No+Photo'

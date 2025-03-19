@@ -14,10 +14,6 @@ const service = axios.create({
 
 service.interceptors.request.use(
   (config) => {
-    const token = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*\=\s*([^;]*).*$)|^.*$/, '$1')
-    if (token) {
-      config.headers.Authorization = token
-    }
     return config
   },
   (error) => {
