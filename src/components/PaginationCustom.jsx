@@ -31,21 +31,28 @@ export default function PaginationCustom({ pageInfo, changePage }) {
           <a
             href="#"
             className="ch-heading-4 flex h-12 w-12 items-center justify-center rounded bg-neutral-200 font-semibold text-neutral-400 group-[.disabled]:cursor-not-allowed group-[.disabled]:opacity-30"
-            onClick={(e) => handlePage(e, pageInfo.current_page - 1)}
+            onClick={(e) => {
+              if (pageInfo.has_pre) {
+                handlePage(e, pageInfo.current_page - 1)
+              } else {
+                e.preventDefault()
+              }
+            }}
           >
             <span className="material-symbols-outlined"> chevron_left </span>
           </a>
         </li>
         {[...Array(pageInfo.total_pages).keys()].map((page) => {
+          const pageNumber = page + 1
           return (
             <li
-              className={`group ${pageInfo.current_page === page + 1 && 'active'}`}
+              className={`group ${pageInfo.current_page === pageNumber && 'active'}`}
               key={`page-${page}`}
-              onClick={(e) => handlePage(e, page + 1)}
+              onClick={(e) => handlePage(e, pageNumber)}
             >
-              {pageInfo.current_page === page + 1 ? (
+              {pageInfo.current_page === pageNumber ? (
                 <span className="ch-heading-4 flex h-12 w-12 items-center justify-center rounded bg-neutral-200 font-semibold text-neutral-300 group-[.active]:bg-secondary-200 group-[.active]:text-neutral-100">
-                  {page + 1}
+                  {pageNumber}
                 </span>
               ) : (
                 <a
@@ -53,7 +60,7 @@ export default function PaginationCustom({ pageInfo, changePage }) {
                   href="#"
                   onClick={(e) => handlePage(e, pageInfo.current_page + 1)}
                 >
-                  {page + 1}
+                  {pageNumber}
                 </a>
               )}
             </li>
@@ -63,7 +70,13 @@ export default function PaginationCustom({ pageInfo, changePage }) {
           <a
             className="ch-heading-4 flex h-12 w-12 items-center justify-center rounded bg-neutral-200 font-semibold text-neutral-400 group-[.disabled]:cursor-not-allowed group-[.disabled]:opacity-30"
             href="#"
-            onClick={(e) => handlePage(e, pageInfo.current_page + 1)}
+            onClick={(e) => {
+              if (pageInfo.has_next) {
+                handlePage(e, pageInfo.current_page + 1)
+              } else {
+                e.preventDefault()
+              }
+            }}
           >
             <span className="material-symbols-outlined"> chevron_right </span>
           </a>

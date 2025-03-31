@@ -247,7 +247,7 @@ export default function OrderPage() {
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="phone" className="flex items-center text-heading-4 font-bold">
+                <label htmlFor="tel" className="flex items-center text-heading-4 font-bold">
                   <span className="mr-1 mt-2 text-red-700">*</span>收件人手機
                 </label>
                 <input
